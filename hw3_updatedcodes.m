@@ -1,4 +1,5 @@
 load hw3.mat
+%%
 beta_init = ones(6,1) %Specifying the initial value
 
 %%Specifying options for fminsearch in questions 1,2 and 4%%
@@ -26,6 +27,10 @@ toc
 tic
 [sol4_base,fval4,exitflag4,output4] = fminsearch(@(beta) sum((y - exp(X*beta)).^2),beta_init,options)
 toc
+
+% all these 4 different methods give very different anser. does that not
+% ring any alarm in your mind? they are all approximatign the same process,
+% they should not be too much different. 
 %%Question 5%%
 
 %%Specifying a 6 X 10 matrix of numbers randomly drawn from [0,10].
