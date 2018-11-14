@@ -1,4 +1,6 @@
-%%%Question 3%%%%%
+% where is question 1 and 2?
+
+%% %Question 3%%%%%
 rng default
 p=haltonset(1);
 x0=net(p,1000);    %%%%Generating quasi-random numbers for integration.
@@ -12,7 +14,7 @@ end
 
 q3 = sum(y)./1000   %%%%%%Analog of the sample average.
 
-%%%%%Question 4%%%%%
+%% %%%Question 4%%%%%
 q4=newt(@(x) (sqrt(1 - x.^2)).*4,0,1,1000);
 
 %%%%%Question 1%%%%%

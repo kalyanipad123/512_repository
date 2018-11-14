@@ -1,29 +1,29 @@
 load hw3.mat
 %%
 beta_init = ones(6,1) %Specifying the initial value
-
-%%Specifying options for fminsearch in questions 1,2 and 4%%
+% divide into sections, two percent points and the space 
+%% Specifying options for fminsearch in questions 1,2 and 4%%
 options = optimset('MaxFunEvals',10000,'TolFun',1e-16);   
 
-%%Specifying options for lsqnonlin in Q3%%
+%% Specifying options for lsqnonlin in Q3%%
 options2 = optimoptions(@lsqnonlin,'MaxFunctionEvaluations',10000, 'MaxIterations', 10000, 'TolFun',1e-16,'StepTolerance', 1e-16, 'Algorithm','levenberg-marquardt'); 
 
-%%Question 1%%
+%% Question 1%%
 tic
 [sol1_base,fval,exitflag,output] = fminsearch(@(beta) -sum(-exp(X*beta) + X*beta.*y - log(factorial(y))),beta_init,options)
 toc
 
-%%Question 2%%
+%% Question 2%%
 tic
 [sol2_base,fval2,exitflag2,output2] = fminunc(@(beta) -sum(-exp(X*beta) + X*beta.*y - log(factorial(y))),beta_init,options)
 toc
 
-%%Question 3%%
+%% Question 3%%
 tic
 [sol3_base] = lsqnonlin(@(beta) y - exp(X*beta),beta_init,[],[],options2)
 toc
 
-%%Question 4%%
+%% Question 4%%
 tic
 [sol4_base,fval4,exitflag4,output4] = fminsearch(@(beta) sum((y - exp(X*beta)).^2),beta_init,options)
 toc
@@ -31,7 +31,9 @@ toc
 % all these 4 different methods give very different anser. does that not
 % ring any alarm in your mind? they are all approximatign the same process,
 % they should not be too much different. 
-%%Question 5%%
+
+
+%% Question 5%%
 
 %%Specifying a 6 X 10 matrix of numbers randomly drawn from [0,10].
 r = (10)*rand(6,10); 
