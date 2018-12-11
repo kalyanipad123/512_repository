@@ -13,6 +13,6 @@ for i=1:20
 end
 
 expec=sum(value);
-
+% this function does not compute loglikelihood, it will overflow.
 
 
