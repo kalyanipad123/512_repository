@@ -1,5 +1,6 @@
+% Divide sections by douible percent! I showed you multiple times how
 clear all;
-%%%%%%%Question 2%%%%%
+%% %%%%%Question 2%%%%%
 [prob,grid,invdist]=tauchen(21,0.5,0.5,0.1); %mu = 0.5 because of the intercept.
 
 %%%%%%%Question 3%%%%%
@@ -26,6 +27,8 @@ for K = 1:100 %initial stock of lumber
         r = profit + delta*prob*V;
         V_new = max(r'); %%maximum for each p, across all potential values of the control variable. 
         V_new_update = repmat(V_new',1,length(control_grid)); 
+%         this is not the right update proceedure. take a look at the
+%         answer key.
         if (abs(V-V_new_update))>1e-6
             V = V_new_update;
         else
@@ -41,8 +44,10 @@ end
 K = 1:100;
 plot(K,VF);
 ylabel('Optimal value');xlabel('Initial stock of lumber');
+% the result is wrong since you miscoded the update, all the rest is also
+% wrong
 
-%%%%%%%Extacting the VF for p = 0.9,1 and 1.1%%%%%%
+%% %%%%%Extacting the VF for p = 0.9,1 and 1.1%%%%%%
 index = zeros(nprice,1);
 for f = 1:nprice
    if p(f,1)<= 0.9 & p(f+1,1)> 0.9 %%Looking at the appropriate grid points within which p = 0.9 falls.
@@ -68,7 +73,7 @@ plot(K,p3);
 legend('p=0.9','p=1','p=1.1');ylabel('Optimal value');xlabel('Initial stock of lumber');
 hold off
 
-%%%%%%%%%Question 4%%%%%%%%
+%% %%%%%%%Question 4%%%%%%%%
 VF2 = [];
 policy2 = [];
 for K = 1:1:max(max(policy)) %initial stock of lumber
@@ -98,7 +103,7 @@ end
 
 plot(p,policy2); ylabel('Stock of timber in period t+2'); xlabel('Price in period t');
 
-%%%%%%%%%%%%Question 6%%%%%%%%%%%%%
+%% %%%%%%%%%%Question 6%%%%%%%%%%%%%
 clear all;
 %Repeating Q2 for Q6%
 [prob,grid,invdist]=tauchen(5,0.5,0.5,0.1); %mu = 0.5 because of the intercept.
