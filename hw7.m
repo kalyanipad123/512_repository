@@ -5,6 +5,9 @@ parm_q7; %%% Extracting the model parameters.
 V0 = 5*ones(L,L); %%Initial guesses
 x0 = 10*ones(L,L);
 epsilon = 1e-1; %%Tolerance
+% this is a really bad stopping tolerance. Even with this bad tolerance I
+% could not have estimated on my computer within 10 minutes. Solver keep
+% stopping prematurely, meaning it is not really solving the problem. 
 iter = 1; %% Iteration count
 %check = 1;
 for iter = 1:1e4
